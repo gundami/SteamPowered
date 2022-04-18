@@ -30,6 +30,7 @@ import com.simibubi.create.content.contraptions.components.flywheel.engine.Engin
 import com.simibubi.create.content.contraptions.goggles.IHaveGoggleInformation;
 import com.teammoeg.steampowered.FluidRegistry;
 
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -61,10 +62,6 @@ public abstract class SteamEngineTileEntity extends EngineTileEntity implements 
 		super(type, pos, state);
 		this.refreshCapability();
 		this.tank = new FluidTank(this.getSteamStorage(), fluidStack -> {
-			Tag<Fluid> steamTag = FluidTags.getAllTags().getTag(new ResourceLocation("forge", "steam"));
-			if (steamTag != null)
-				return fluidStack.getFluid().is(steamTag);
-			else
 				return fluidStack.getFluid() == FluidRegistry.steam.get();
 		});
 	}
